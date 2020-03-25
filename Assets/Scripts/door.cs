@@ -8,7 +8,12 @@ public class door : MonoBehaviour
     public SpriteRenderer Renderer;
 
     public Sprite closeSprite;
+    public Sprite openSprite;
     // Start is called before the first frame update
+
+    bool open = false; 
+
+    int counter = 0;
     void Start()
     {
         Renderer = GetComponent<SpriteRenderer>();
@@ -22,8 +27,18 @@ public class door : MonoBehaviour
     }
 
     void OnMouseDown(){
-        Debug.Log("Clicked");
-        Renderer.sprite = closeSprite;
+        counter++;
+        Debug.Log(counter);
+
+        
+        if(open){
+            open = false;
+            Renderer.sprite = closeSprite;
+        }else{
+            open = true;
+            Renderer.sprite = openSprite;
+        }
+
     }
 
 }
