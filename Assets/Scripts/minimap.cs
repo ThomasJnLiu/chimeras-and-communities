@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class minimap : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class minimap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        // if(Input.GetKeyDown("up")){
+        //     Debug.Log("fire");
+        // }
     }
 
     void OnMouseOver(){
@@ -25,4 +28,14 @@ public class minimap : MonoBehaviour
         Debug.Log("exit");
         transform.localScale = new Vector3(1,1,1);
     }
+
+    public void OpenMap(){
+        Debug.Log("open map");
+        transform.localScale = new Vector3 (2,2,2);
+    }
+public void CloseMap(){
+    Debug.Log("close map");
+    transform.localScale = new Vector3(1,1,1);
+}
+    
 }

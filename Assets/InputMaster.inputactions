@@ -1,0 +1,52 @@
+{
+    "name": "InputMaster",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "63e4750b-b742-4684-87d8-e7312fd62eb1",
+            "actions": [
+                {
+                    "name": "OpenMap",
+                    "type": "Button",
+                    "id": "23761e65-c28e-4eb1-bf74-dec518a8d4a7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "CloseMap",
+                    "type": "Button",
+                    "id": "382841b8-8337-4819-b5f9-7c5e729befdb",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d320e0cc-bebe-4e19-adef-a453d676a251",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=2)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91db909b-30ad-49b8-86e2-ed5c7ff310ac",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CloseMap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
