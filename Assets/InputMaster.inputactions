@@ -3,31 +3,31 @@
     "maps": [
         {
             "name": "Player",
-            "id": "63e4750b-b742-4684-87d8-e7312fd62eb1",
+            "id": "fc1b57d6-d2c1-4559-b332-534c4884b7ce",
             "actions": [
                 {
                     "name": "OpenMap",
                     "type": "Button",
-                    "id": "23761e65-c28e-4eb1-bf74-dec518a8d4a7",
-                    "expectedControlType": "Button",
+                    "id": "49a1d0ce-96c0-419f-b76c-4d6b81dbddb8",
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press"
                 },
                 {
                     "name": "CloseMap",
                     "type": "Button",
-                    "id": "382841b8-8337-4819-b5f9-7c5e729befdb",
+                    "id": "01c386d6-45fa-46d3-ac62-691a596a2759",
                     "expectedControlType": "",
                     "processors": "",
-                    "interactions": ""
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
                 {
                     "name": "",
-                    "id": "d320e0cc-bebe-4e19-adef-a453d676a251",
+                    "id": "24be3fa0-9a84-400b-a879-8c422e9f7302",
                     "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=2)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "OpenMap",
@@ -36,9 +36,9 @@
                 },
                 {
                     "name": "",
-                    "id": "91db909b-30ad-49b8-86e2-ed5c7ff310ac",
+                    "id": "a9653951-69a3-404b-8914-0e6e56218164",
                     "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=1)",
+                    "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "CloseMap",
