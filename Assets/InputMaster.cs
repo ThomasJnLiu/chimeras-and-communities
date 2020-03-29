@@ -33,6 +33,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": ""Press(behavior=1)""
+                },
+                {
+                    ""name"": ""Movement"",
+                    ""type"": ""Button"",
+                    ""id"": ""5a4ec0f6-536a-4944-a656-57fb7d73c291"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -57,6 +65,61 @@ public class @InputMaster : IInputActionCollection, IDisposable
                     ""action"": ""CloseMap"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""WASD"",
+                    ""id"": ""3683fdd6-d5b7-420c-9981-cc6e0c07c3c9"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""5833fef3-7338-4291-b3db-8cd9cb2268cb"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""26dbffd8-2931-471e-ba11-ff74daf71116"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""953bb06f-ba38-4e1d-83ad-0010ae1e9abe"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""8d5296f2-3b88-4e5f-bb86-3f77f0085446"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -67,6 +130,7 @@ public class @InputMaster : IInputActionCollection, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_OpenMap = m_Player.FindAction("OpenMap", throwIfNotFound: true);
         m_Player_CloseMap = m_Player.FindAction("CloseMap", throwIfNotFound: true);
+        m_Player_Movement = m_Player.FindAction("Movement", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -118,12 +182,14 @@ public class @InputMaster : IInputActionCollection, IDisposable
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_Player_OpenMap;
     private readonly InputAction m_Player_CloseMap;
+    private readonly InputAction m_Player_Movement;
     public struct PlayerActions
     {
         private @InputMaster m_Wrapper;
         public PlayerActions(@InputMaster wrapper) { m_Wrapper = wrapper; }
         public InputAction @OpenMap => m_Wrapper.m_Player_OpenMap;
         public InputAction @CloseMap => m_Wrapper.m_Player_CloseMap;
+        public InputAction @Movement => m_Wrapper.m_Player_Movement;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -139,6 +205,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @CloseMap.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseMap;
                 @CloseMap.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseMap;
                 @CloseMap.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCloseMap;
+                @Movement.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
+                @Movement.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovement;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -149,6 +218,9 @@ public class @InputMaster : IInputActionCollection, IDisposable
                 @CloseMap.started += instance.OnCloseMap;
                 @CloseMap.performed += instance.OnCloseMap;
                 @CloseMap.canceled += instance.OnCloseMap;
+                @Movement.started += instance.OnMovement;
+                @Movement.performed += instance.OnMovement;
+                @Movement.canceled += instance.OnMovement;
             }
         }
     }
@@ -157,5 +229,6 @@ public class @InputMaster : IInputActionCollection, IDisposable
     {
         void OnOpenMap(InputAction.CallbackContext context);
         void OnCloseMap(InputAction.CallbackContext context);
+        void OnMovement(InputAction.CallbackContext context);
     }
 }
