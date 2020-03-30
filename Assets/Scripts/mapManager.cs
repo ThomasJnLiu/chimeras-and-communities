@@ -9,6 +9,7 @@ public class mapManager : MonoBehaviour
     InputMaster mapControls;
 
     public GameObject minimap, map;
+    public bool mapOpen = false;
     void Awake(){
         mapControls = new InputMaster();
         mapControls.Enable();
@@ -54,10 +55,14 @@ public class mapManager : MonoBehaviour
         Debug.Log(context);
         minimap.SetActive(false);
         map.SetActive(true);
+
+        mapOpen = true;
     }
 
     void CloseMap(){
         minimap.SetActive(true);
         map.SetActive(false);
+
+        mapOpen = false;
     }
 }

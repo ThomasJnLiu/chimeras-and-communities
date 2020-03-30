@@ -27,18 +27,20 @@ public class door : MonoBehaviour
     }
 
     void OnMouseDown(){
-        counter++;
-        Debug.Log(counter);
+        //checks map state, prevents interaction when map is open
+        if(!mapManager.instance.mapOpen){
+            counter++;
+            Debug.Log(counter);
 
-        
-        if(open){
-            open = false;
-            Renderer.sprite = closeSprite;
-        }else{
-            open = true;
-            Renderer.sprite = openSprite;
+            
+            if(open){
+                open = false;
+                Renderer.sprite = closeSprite;
+            }else{
+                open = true;
+                Renderer.sprite = openSprite;
+            }
         }
-
     }
 
 }
