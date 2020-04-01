@@ -34,6 +34,8 @@ public class mapManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        JSAM.AudioManager.instance.PlayMusic("roomMusic");
+
         mapControls.Player.OpenMap.performed += OpenMap;
         mapControls.Player.CloseMap.performed += _ => CloseMap();
         mapControls.Player.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
