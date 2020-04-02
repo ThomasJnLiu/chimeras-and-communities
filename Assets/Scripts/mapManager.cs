@@ -42,7 +42,7 @@ public class mapManager : MonoBehaviour
         mapControls.Player.CloseMap.performed += _ => CloseMap();
         mapControls.Player.Movement.performed += ctx => Move(ctx.ReadValue<Vector2>());
 
-        minimap.SetActive(true);
+        //minimap.SetActive(true);
         map.SetActive(false);
 
         locations = GameObject.FindGameObjectsWithTag("Location");
@@ -74,7 +74,7 @@ public class mapManager : MonoBehaviour
     }
 
     void CloseMap(){
-        minimap.SetActive(true);
+        //minimap.SetActive(true);
         map.SetActive(false);
 
         mapOpen = false;
