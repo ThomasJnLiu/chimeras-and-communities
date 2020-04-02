@@ -8,8 +8,10 @@ public class mapManager : MonoBehaviour
     public static mapManager instance;
     InputMaster mapControls;
 
-    public GameObject minimap, map;
+    public GameObject minimap, map, currentLocation;
     public bool mapOpen = false;
+    public GameObject[] locations;
+    public SpriteRenderer scrim;
     void Awake(){
         mapControls = new InputMaster();
         mapControls.Enable();
@@ -42,6 +44,15 @@ public class mapManager : MonoBehaviour
 
         minimap.SetActive(true);
         map.SetActive(false);
+
+        locations = GameObject.FindGameObjectsWithTag("Location");
+        scrim.color = new Color (0,0,0,0);
+
+        foreach(GameObject location in locations){
+            location.SetActive(false);
+        }
+
+        currentLocation.SetActive(true);
     }
 
     // Update is called once per frame
@@ -54,11 +65,12 @@ public class mapManager : MonoBehaviour
         Debug.Log(direction);
     }
     void OpenMap(InputAction.CallbackContext context){
-        Debug.Log(context);
         minimap.SetActive(false);
         map.SetActive(true);
 
         mapOpen = true;
+
+        scrim.color = new Color (0,0,0,0.5f);
     }
 
     void CloseMap(){
@@ -66,5 +78,15 @@ public class mapManager : MonoBehaviour
         map.SetActive(false);
 
         mapOpen = false;
+
+        scrim.color = new Color (0,0,0,0);
+    }
+
+    public void ChangeLocation(GameObject newLocation){
+        foreach(GameObject location in locations){
+            location.SetActive(false);
+        }
+
+        currentLocation = newLocation;
     }
 }

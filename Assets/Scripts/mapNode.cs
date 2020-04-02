@@ -28,6 +28,7 @@ public class mapNode : MonoBehaviour
     }
 
     void OnMouseDown(){
+        mapManager.instance.ChangeLocation(location);
         location.SetActive(true);
     }
     
