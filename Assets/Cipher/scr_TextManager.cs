@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class scr_TextManager : MonoBehaviour
 {
-
+    public static scr_TextManager instance;
     public TextAsset script;
     public Text textArea;
     public GameObject button;
@@ -23,6 +23,26 @@ public class scr_TextManager : MonoBehaviour
     bool isTyping;
 
     public float delay;
+
+    void Awake(){
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else if (instance != this)
+        {
+            // A unique case where the Singleton exists but not in this scene
+            if (instance.gameObject.scene.name == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -58,14 +78,11 @@ public class scr_TextManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //test function to call and test textbox, delete later
-        if (Input.GetKey("z"))
-        {
-            button.SetActive(true);
-            ShowTextbox(0, 0, 0.1f);
-        }
     }
 
+    public void Testfunction(int test, int test2){
+
+    }
     //starts text sequence
     //called when text should be shown on screen
     //takes location/index of script, assigns it to textArea, opens textbox so player can advance script
@@ -74,6 +91,8 @@ public class scr_TextManager : MonoBehaviour
         indexA = indexC;
         indexB = indexD;
         delay = delayInput;
+
+        button.SetActive(true);
 
         currentSentence = scriptArray[indexA, indexB];
         textArea.text = currentSentence;
