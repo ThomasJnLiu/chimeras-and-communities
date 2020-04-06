@@ -18,7 +18,6 @@ public class clock : MonoBehaviour
     void Update()
     {
         dt = System.DateTime.Now;
-        Debug.Log(dt.ToString("hh:mm:ss"));   
         clockText.text = dt.ToString("hh:mm:ss");
     }
 }
