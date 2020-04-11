@@ -12,6 +12,7 @@ public class mapManager : MonoBehaviour
     public bool mapOpen = false;
     public GameObject[] locations;
     public SpriteRenderer scrim;
+    
     void Awake(){
         mapControls = new InputMaster();
         mapControls.Enable();
