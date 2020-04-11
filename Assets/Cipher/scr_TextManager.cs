@@ -24,6 +24,7 @@ public class scr_TextManager : MonoBehaviour
 
     public float delay;
 
+    public GameObject[] colliders;
     void Awake(){
         if (instance == null)
         {
@@ -41,6 +42,8 @@ public class scr_TextManager : MonoBehaviour
                 Destroy(this);
             }
         }
+
+        colliders = GameObject.FindGameObjectsWithTag("Colliders");
     }
 
     // Use this for initialization
@@ -80,14 +83,15 @@ public class scr_TextManager : MonoBehaviour
     {
     }
 
-    public void Testfunction(int test, int test2){
-
-    }
     //starts text sequence
     //called when text should be shown on screen
     //takes location/index of script, assigns it to textArea, opens textbox so player can advance script
     public void ShowTextbox(int indexC, int indexD, float delayInput)
     {
+        foreach(GameObject collider in colliders){
+            collider.SetActive(false);
+        }
+        
         indexA = indexC;
         indexB = indexD;
         delay = delayInput;
@@ -123,6 +127,10 @@ public class scr_TextManager : MonoBehaviour
                 //remove the textbox, the current dialogue is finished
                 Debug.Log("dialogue done");
                 button.SetActive(false);
+
+                foreach(GameObject collider in colliders){
+                    collider.SetActive(true);
+                }
             }
             else
             {
