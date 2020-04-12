@@ -19,6 +19,8 @@ public class locationNode : MonoBehaviour
     }
 
     void OnMouseDown(){
-        scr_TextManager.instance.ShowTextbox(indexA, indexB, delay);
+        if(!mapManager.instance.mapOpen){
+            scr_TextManager.instance.ShowTextbox(indexA, indexB, delay);
+         }
     }
 }
