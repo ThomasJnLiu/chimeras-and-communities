@@ -14,6 +14,8 @@ public class door : MonoBehaviour
     bool open = false; 
 
     int counter = 0;
+
+    public SpriteRenderer scrim;
     void Start()
     {
         Renderer = GetComponent<SpriteRenderer>();
@@ -32,13 +34,16 @@ public class door : MonoBehaviour
             counter++;
             Debug.Log(counter);
 
-            
+            JSAM.AudioManager.instance.PlaySoundOnce("fridge");
             if(open){
                 open = false;
                 Renderer.sprite = closeSprite;
+                scrim.color = new Color (0,0,0,0);
+                
             }else{
                 open = true;
                 Renderer.sprite = openSprite;
+                scrim.color = new Color (0,0,0,0.5f);
             }
         }
     }

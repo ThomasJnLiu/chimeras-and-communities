@@ -72,6 +72,9 @@ public class mapManager : MonoBehaviour
         mapOpen = true;
 
         scrim.color = new Color (0,0,0,0.5f);
+
+        JSAM.AudioManager.instance.PlaySoundOnce("openMap");
+
     }
 
     void CloseMap(){
@@ -81,6 +84,8 @@ public class mapManager : MonoBehaviour
         mapOpen = false;
 
         scrim.color = new Color (0,0,0,0);
+
+        JSAM.AudioManager.instance.PlaySoundOnce("closeMap");
     }
 
     public void ChangeLocation(GameObject newLocation){
