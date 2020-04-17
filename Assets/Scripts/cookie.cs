@@ -21,5 +21,6 @@ public class cookie : MonoBehaviour
     void OnMouseDown(){
         cookieManager.instance.Increment();
         Destroy(gameObject);
+        JSAM.AudioManager.instance.PlaySoundOnce("crunch");
     }
 }
