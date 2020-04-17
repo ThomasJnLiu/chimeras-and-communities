@@ -252,4 +252,19 @@ MonoBehaviour:
   gameRunning: 0
   xPos: 0
   yPos: 0
+  xPos2: 0
+  yPos2: 0
+  xPosition:
+  - 0
+  - 0
+  - 0
+  yPosition:
+  - 0
+  - 0
+  - 0
+  cookiePos:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
   cookiePosition: {x: 0, y: 0}
+  cookiePos2: {x: 0, y: 0}

@@ -12,6 +12,8 @@ public class cookieManager : MonoBehaviour
     public bool gameRunning = true;
 
     public float xPos, yPos, xPos2, yPos2;
+    public float[] xPosition, yPosition; 
+    public Vector2[] cookiePos;
     public Vector2 cookiePosition, cookiePos2; 
 
     void Awake(){
@@ -51,19 +53,28 @@ public class cookieManager : MonoBehaviour
 
     IEnumerator SpawnCookie(){
         if(gameRunning){
-            xPos = Random.Range(-7,7);
-            yPos = Random.Range(-2.5f,2.5f);
 
-                        xPos2 = Random.Range(-7,7);
-            yPos2 = Random.Range(-2.5f,2.5f);
+            for (int i = 0; i < 3; i++){
+                xPosition[i] = Random.Range(-7f, 7f);
+                yPosition[i] = Random.Range(-2.5f, 2.5f);
+
+                cookiePos[i] = new Vector2 (xPosition[i], yPosition[i]); 
+                Instantiate(cookie, cookiePos[i], Quaternion.identity);
+            }
+
+            // xPos = Random.Range(-7,7);
+            // yPos = Random.Range(-2.5f,2.5f);
+
+            //             xPos2 = Random.Range(-7,7);
+            // yPos2 = Random.Range(-2.5f,2.5f);
             
-            cookiePosition = new Vector2(xPos, yPos);
-            cookiePos2 = new Vector2(xPos2, yPos2);
+            // cookiePosition = new Vector2(xPos, yPos);
+            // cookiePos2 = new Vector2(xPos2, yPos2);
             
             yield return new WaitForSeconds(0.7f);
             
-            Instantiate(cookie, cookiePosition, Quaternion.identity);
-            Instantiate(cookie, cookiePos2, Quaternion.identity);
+            // Instantiate(cookie, cookiePosition, Quaternion.identity);
+            // Instantiate(cookie, cookiePos2, Quaternion.identity);
 
             StartCoroutine ("SpawnCookie");
         }
