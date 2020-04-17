@@ -13,7 +13,9 @@ public class cookie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(!cookieManager.instance.gameRunning){
+            Destroy(gameObject);
+        }
     }
 
     void OnMouseDown(){

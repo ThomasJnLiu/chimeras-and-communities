@@ -46,9 +46,17 @@ public class cookieManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer -= Time.deltaTime;
-        timer2 = System.Math.Round(timer, 2);
-        timerText.text = timer2.ToString();
+        if(timer > 0){
+            timer -= Time.deltaTime;
+            timer2 = System.Math.Round(timer, 2);
+            timerText.text = timer2.ToString();
+        }else{
+            timer = 0; 
+            timer2 = System.Math.Round(timer, 2);
+            timerText.text = timer2.ToString();
+            gameRunning = false;
+        }
+
 
         
     }
