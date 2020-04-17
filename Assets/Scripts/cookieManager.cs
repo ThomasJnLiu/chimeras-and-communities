@@ -9,6 +9,11 @@ public class cookieManager : MonoBehaviour
 
     public int counter = 0;
 
+    public bool gameRunning = true;
+
+    public float xPos, yPos, xPos2, yPos2;
+    public Vector2 cookiePosition, cookiePos2; 
+
     void Awake(){
         if (instance == null)
         {
@@ -30,7 +35,8 @@ public class cookieManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameRunning = true;
+                    StartCoroutine ("SpawnCookie");
     }
 
     // Update is called once per frame
@@ -41,5 +47,25 @@ public class cookieManager : MonoBehaviour
 
     public void Increment(){
         counter++;
+    }
+
+    IEnumerator SpawnCookie(){
+        if(gameRunning){
+            xPos = Random.Range(-7,7);
+            yPos = Random.Range(-2.5f,2.5f);
+
+                        xPos2 = Random.Range(-7,7);
+            yPos2 = Random.Range(-2.5f,2.5f);
+            
+            cookiePosition = new Vector2(xPos, yPos);
+            cookiePos2 = new Vector2(xPos2, yPos2);
+            
+            yield return new WaitForSeconds(0.7f);
+            
+            Instantiate(cookie, cookiePosition, Quaternion.identity);
+            Instantiate(cookie, cookiePos2, Quaternion.identity);
+
+            StartCoroutine ("SpawnCookie");
+        }
     }
 }
