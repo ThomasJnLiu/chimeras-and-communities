@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class cookieManager : MonoBehaviour
 {
     public static cookieManager instance;
-    public GameObject cookie;
+    public GameObject cookie, instructions;
 
     public int counter = 0;
 
@@ -15,9 +16,11 @@ public class cookieManager : MonoBehaviour
     public float[] xPosition, yPosition; 
     public Vector2[] cookiePos;
 
-    public Text scoreText, timerText;
+    public Text scoreText, timerText, finalText;
     public float timer = 20f;
     double timer2;
+
+    
     void Awake(){
         if (instance == null)
         {
@@ -39,26 +42,27 @@ public class cookieManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameRunning = true;
-        StartCoroutine ("SpawnCookie");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(timer > 0){
-            timer -= Time.deltaTime;
-            timer2 = System.Math.Round(timer, 2);
-            timerText.text = timer2.ToString();
-        }else{
-            timer = 0; 
-            timer2 = System.Math.Round(timer, 2);
-            timerText.text = timer2.ToString();
-            gameRunning = false;
+        if(gameRunning){
+            if(timer > 0){
+                timer -= Time.deltaTime;
+                timer2 = System.Math.Round(timer, 2);
+                timerText.text = timer2.ToString();
+            }else{
+                timer = 0; 
+                timer2 = System.Math.Round(timer, 2);
+                timerText.text = timer2.ToString();
+                gameRunning = false;
+                instructions.SetActive(true);
+                finalText.text = "You've clicked on " + counter + " cookies.";
+            }
         }
 
-
-        
     }
 
     public void Increment(){
@@ -81,5 +85,16 @@ public class cookieManager : MonoBehaviour
 
             StartCoroutine ("SpawnCookie");
         }
+    }
+
+    public void StartGame(){
+        gameRunning = true;
+        instructions.SetActive(false);
+        StartCoroutine ("SpawnCookie");
+        timer = 20f;
+    }
+
+    public void ReturnToRoom(){
+        SceneManager.LoadScene("Room");
     }
 }
