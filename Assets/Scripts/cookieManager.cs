@@ -59,7 +59,7 @@ public class cookieManager : MonoBehaviour
                 timerText.text = timer2.ToString();
                 gameRunning = false;
                 instructions.SetActive(true);
-                finalText.text = "You've clicked on " + counter + " cookies.";
+                finalText.text = "You've eaten " + counter + " cookies.";
             }
         }
 
@@ -88,6 +88,7 @@ public class cookieManager : MonoBehaviour
     }
 
     public void StartGame(){
+        counter = 0;
         gameRunning = true;
         instructions.SetActive(false);
         StartCoroutine ("SpawnCookie");

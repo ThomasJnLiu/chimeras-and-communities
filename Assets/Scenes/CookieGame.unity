@@ -608,7 +608,7 @@ Canvas:
   m_GameObject: {fileID: 1054362301}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 1
+  m_RenderMode: 2
   m_Camera: {fileID: 31140080}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -628,8 +628,8 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1054362301}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 90}
+  m_LocalScale: {x: 0.02793296, y: 0.02793296, z: 0.02793296}
   m_Children:
   - {fileID: 1593313553}
   - {fileID: 1628523606}
@@ -640,8 +640,8 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0, y: 0}
+  m_SizeDelta: {x: 636, y: 358}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1147063721
 GameObject:
   m_ObjectHideFlags: 0
@@ -710,7 +710,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: You've clicked on 0 cookies.
+  m_Text: You've eaten 0 cookies.
 --- !u!222 &1147063724
 CanvasRenderer:
   m_ObjectHideFlags: 0

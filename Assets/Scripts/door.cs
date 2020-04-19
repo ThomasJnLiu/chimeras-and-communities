@@ -9,9 +9,11 @@ public class door : MonoBehaviour
 
     public Sprite closeSprite;
     public Sprite openSprite;
+    public bool fridge;
+    public GameObject fridgeOpen;
     // Start is called before the first frame update
 
-    bool open = false; 
+    public bool open = false; 
 
     int counter = 0;
 
@@ -37,12 +39,22 @@ public class door : MonoBehaviour
             JSAM.AudioManager.instance.PlaySoundOnce("fridge");
             if(open){
                 open = false;
-                Renderer.sprite = closeSprite;
+                if(fridge){
+                    fridgeOpen.SetActive(false);
+                }else{
+                    Renderer.sprite = closeSprite;
+                }
+                
                 scrim.color = new Color (0,0,0,0);
                 
             }else{
+                Debug.Log("oepne");
                 open = true;
-                Renderer.sprite = openSprite;
+                if(fridge){
+                    fridgeOpen.SetActive(true);
+                }else{
+                    Renderer.sprite = closeSprite;
+                }                
                 scrim.color = new Color (0,0,0,0.5f);
             }
         }
